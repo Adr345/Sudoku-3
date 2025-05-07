@@ -106,28 +106,24 @@ public class MySudokuBoard {
          return true;
       }
       
-      for(int c = 0; c < myBoard[0].length; c++) {
-         for(int r = 0; r < myBoard.length; r++) {
+      // goes through every spot in board
+      for(int r = 0; r < myBoard.length; r++) {
+         for(int c = 0; c < myBoard[0].length; c++) {
+            // check for empty
             if(myBoard[r][c] == '.') {
+               // imputs 1-9 checking if valid
                for(char num = '1'; num <= '9'; num++) {
                   myBoard[r][c] = num;
+                  // does solve again
                   if(solve()){
                      return true;
                   }
-                  myBoard[r][c] = '.';
-                  //myBoard[r][c] = num;
-                  // if(!solve()) {
-//                      num++;
-//                      myBoard[r][c] = num;
-//                      solve();
-//                   } else if(solve()) {
-//                      solve();
-                // } 
-                     
+                  myBoard[r][c] = '.';  
                }
             }
          }
       }
+      // return false if not solved
       return false;
    }
    
