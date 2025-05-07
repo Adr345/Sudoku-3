@@ -105,7 +105,30 @@ public class MySudokuBoard {
       } else if(isSolved()) {
          return true;
       }
-      return true;
+      
+      for(int c = 0; c < myBoard[0].length; c++) {
+         for(int r = 0; r < myBoard.length; r++) {
+            if(myBoard[r][c] == '.') {
+               for(char num = '1'; num <= '9'; num++) {
+                  myBoard[r][c] = num;
+                  if(solve()){
+                     return true;
+                  }
+                  myBoard[r][c] = '.';
+                  //myBoard[r][c] = num;
+                  // if(!solve()) {
+//                      num++;
+//                      myBoard[r][c] = num;
+//                      solve();
+//                   } else if(solve()) {
+//                      solve();
+                // } 
+                     
+               }
+            }
+         }
+      }
+      return false;
    }
    
    public String toString() {
