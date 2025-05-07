@@ -11,7 +11,13 @@ public class SudokuSolverEngine {
 
       System.out.print("Solving board...");
       long start = System.currentTimeMillis();
-      board.solve();
+      if(board.isSolved()){
+         System.out.println("Board is already solved");
+      } else if(!board.isValid()) {
+         System.out.println("Board cannot be solved");
+      } else {
+         board.solve();
+      }
       long stop = System.currentTimeMillis();
       System.out.printf("SOLVED in %.3f seconds.\n", ((stop-start)/1000.0));
       System.out.println();
